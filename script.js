@@ -24,7 +24,7 @@ async function getsongs(folder) {
   currFolder = folder;
   // console.log(`/assets/music/${folder}`);
   let a = await fetch(
-    `/Spotify-clone/assets/music/${folder}`
+    `./assets/music/${folder}`
   );
   let response = await a.text();
   let div = document.createElement("div");
@@ -97,7 +97,7 @@ const playMusic = (name, artist, e) => {
 };
 
 async function getFolders(){
-  let a = await fetch(`/Spotify-clone/assets/music/`);
+  let a = await fetch(`./assets/music/`);
   let response = await a.text();
   let div = document.createElement("div");
   div.innerHTML = response;
@@ -107,7 +107,7 @@ async function getFolders(){
     const element = anchors[i];
     if(element.href.includes("/music")){
       let folder = (element.href.split("/").slice(-2)[0]);
-      let a = await fetch(`/Spotify-clone/assets/music/${folder}/info.json`);
+      let a = await fetch(`./assets/music/${folder}/info.json`);
       let response = await a.json();
       // console.log(response.title,response.descreption,response.datafolder);
       cardContainer.innerHTML+= `                    <div data-folder=${response.datafolder} class="card">
